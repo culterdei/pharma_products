@@ -75,7 +75,6 @@ class ProductCRUD:
                     elif column == "region":
                         query = query.filter(Product.region.ilike(value))
         if sorting:
-            """
             fields = {
                 "name": Product.name,
                 "ingredients": Product.ingredients,
@@ -88,25 +87,4 @@ class ProductCRUD:
                         query = query.order_by(fields[column])
                     else:
                         query = query.order_by(desc(fields[column]))
-            """
-            for column, value in sorting.items():
-                if hasattr(Product, column):
-                    if value == "asc":
-                        if column == "name":
-                            query = query.order_by(Product.name)
-                        elif column == "ingredients":
-                            query = query.order_by(Product.ingredients)
-                        elif column == "area":
-                            query = query.order_by(Product.area)
-                        elif column == "date_added":
-                            query = query.order_by(Product.date_added)
-                    else:
-                        if column == "name":
-                            query = query.order_by(desc(Product.name))
-                        elif column == "ingredients":
-                            query = query.order_by(desc(Product.ingredients))
-                        elif column == "area":
-                            query = query.order_by(desc(Product.area))
-                        elif column == "date_added":
-                            query = query.order_by(desc(Product.date_added))
         return query.all()

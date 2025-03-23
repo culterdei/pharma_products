@@ -11,7 +11,7 @@
                 <form class="mt-4" action="{{ url_for('search_products').include_query_params(query=query, area=area, region=region, order_by=order_by, direction=direction) }}" method="get">
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <input type="text" name="query" placeholder="Search here or filter/sort by buttons" class="form-control">
+                            <input type="text" name="query" placeholder="Search here or filter/sort by buttons - press enter here" class="form-control">
                         </div>
                         <div class="col-md-4">
                             <select name="area" class="form-select">
