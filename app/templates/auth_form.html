@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <head>
+        <title>Sign up or login</title>
+    </head>
+    <body>
+        <h1>Authentication</h1>
+        <form action="/login_form" method="POST" enctype="multipart/form-data">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <input type="submit" value="Sign up">
+            <input type="submit" value="Login" formaction="/login">
+        </form>
+    </body>
+</div>
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2>Products</h2>
+                {% if current_user %}
+                    <a href="{{ url_for('create_product') }}" class="btn btn-primary">Add Product</a>
+                {% endif %}
+                <form class="mt-4" action="{{ url_for('search_products').include_query_params(query=query, area=area, region=region, order_by=order_by, direction=direction) }}" method="get">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <input type="text" name="query" placeholder="Search products..." class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                            <select name="area" class="form-select">
+                                <option value="">All Areas</option>
+                                {% for area in areas %}
+                                    <option value="{{ area }}">{{ area }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="region" class="form-select">
+                                <option value="">All Regions</option>
+                                {% for region in regions %}
+                                    <option value="{{ region }}">{{ region }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="order_by" class="form-select">
+                                <option value="">As is</option>
+                                <option value="name">Name</option>
+                                <option value="ingredients">Ingredients</option>
+                                <option value="area">Therapeutic area</option>
+                                <option value="date_added">Date added</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select name="direction" class="form-select">
+                                <option value="">As is</option>
+                                <option value="asc">ASC</option>
+                                <option value="desc">DESC</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mt-4">
+                    {% for product in products %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ product.name }}</h5>
+                                <p class="card-text">Description: {{ product.description }}</p>
+                                <p class="card-text">Area: {{ product.area }}</p>
+                                <p class="card-text">Region: {{ product.regions }}</p>
+                                <p class="card-text">Ingredients: {{ product.ingredients }}</p>
+                                <a href="{{ url_for('search_products').include_query_params(query="", user_id=product.user_id) }}"
+                                   class="btn btn-sm btn-primary">{{ product.user.username }}</a>
+                                <p class="card-text">Date added: {{ product.date_added }}</p>
+                                {% if current_user.id ==  product.user_id %}
+                                    <a href="{{ url_for('edit_product_form', product_id=product.id) }}"
+                                       class="btn btn-sm btn-primary">Edit</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

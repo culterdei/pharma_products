@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <head>
+        <title>Create a product</title>
+    </head>
+    <body>
+        <h1>New pharmaceutical</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br>
+            <label for="description">Description:</label><br>
+            <input type="text" id="description" name="description"><br>
+            <label for="area">Therapeutical area:</label><br>
+            <input type="text" id="area" name="area"><br>
+            <label for="regions">Regions:</label><br>
+            <input type="text" id="regions" name="regions"><br>
+            <label for="ingredients">Ingredients:</label><br>
+            <input type="text" id="ingredients" name="ingredients"><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div>
+    <head>
+        <title>Edit a product</title>
+    </head>
+    <body>
+        <h1>Change info about pharmaceutical</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" value={{product.name}}><br>
+            <label for="description">Description:</label><br>
+            <input type="text" id="description" name="description" value={{product.description}}><br>
+            <label for="area">Therapeutical area:</label><br>
+            <input type="text" id="area" name="area" value={{product.area}}><br>
+            <label for="regions">Regions:</label><br>
+            <input type="text" id="regions" name="regions" value={{product.area}}><br>
+            <label for="ingredients">Ingredients:</label><br>
+            <input type="text" id="ingredients" name="ingredients" value={{product.ingredients}}><br>
+            <label for="ingredients">Date added:</label><br>
+            <input type="text" id="date_added" name="date_added" value={{product.date_added}} readonly><br>
+            <label for="ingredients">User ID:</label><br>
+            <input type="text" id="user_id" name="user_id" value={{product.user_id}} readonly><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</div>
+{% endblock %}
